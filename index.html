@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Video background demo</title>
-    <link rel="stylesheet" href="assets/styles.css" />
-    <style>
-      body, html { margin:0; height:100%; overflow:hidden; }
-      video { position: fixed; top:50%; left:50%; min-width:100%; min-height:100%; width:auto; height:auto; transform: translate(-50%,-50%); z-index:-1; }
-      #content { position: relative; z‑index: 1; color: white; text-align: center; padding-top: 40vh; }
-    </style>
-  </head>
-  <body>
-    <video autoplay muted loop playsinline>
-      <source src="./assets/video/intro.mp4" type="video/mp4">
-      Sorry, your browser doesn’t support embedded videos.
-    </video>
-    <div id="content">
-      <h1>Hello, GitHub Pages</h1>
-      <p>This is overlay text on a video background.</p>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Video Sections Page</title>
+  <style>
+    html, body { margin:0; padding:0; height:100%; overflow:hidden; }
+    .container { display:flex; height:100vh; width:400vw; }
+    .section { min-width:100vw; height:100vh; position:relative; }
+    .intro { background-color:#ffffff; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+    .video-section { opacity:0; animation: fadeIn 1s forwards; }
+    .video1 { animation-delay: 1s; }
+    .video2 { animation-delay: 2s; }
+    .video3 { animation-delay: 3s; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-width:100%; min-height:100%; width:auto; height:auto; }
+    .content { position:relative; z-index:1; text-align:center; }
+    .intro .content { color:#000; }
+    .video-section .content { color:#fff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Section 1: Intro -->
+    <section class="section intro">
+      <div class="content">
+        <h1>Your Name</h1>
+        <h2>Your Title</h2>
+      </div>
+    </section>
+
+    <!-- Section 2: Video 1 -->
+    <section class="section video-section video1">
+      <video autoplay muted loop playsinline>
+        <source src="./assets/video/intro.mp4" type="video/mp4">
+        Sorry, your browser doesn’t support embedded videos.
+      </video>
+    </section>
+
+    <!-- Section 3: Video 2 -->
+    <section class="section video-section video2">
+      <video autoplay muted loop playsinline>
+        <source src="./assets/video/intro.mp4" type="video/mp4">
+        Sorry, your browser doesn’t support embedded videos.
+      </video>
+    </section>
+
+    <!-- Section 4: Video 3 -->
+    <section class="section video-section video3">
+      <video autoplay muted loop playsinline>
+        <source src="./assets/video/intro.mp4" type="video/mp4">
+        Sorry, your browser doesn’t support embedded videos.
+      </video>
+    </section>
+  </div>
+</body>
 </html>
 
