@@ -1,26 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Taira Wang – Portfolio</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="assets/css/custom.css" />
-</head>
+  <meta charset="utf-8">
+  <title>Taira Wang – Front‑End Developer & ML Enthusiast</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset & base typography */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font: 18px/1.5 "Inter", sans-serif; color: #111; }
 
+    /* 1️⃣ Hero section with full‑screen background video */
+    #hero {
+      position: relative;
+      height: 100vh;           /* one full viewport */
+      overflow: hidden;
+      transition: opacity 0.5s ease-out;
+    }
+
+    #hero video {
+      position: absolute;
+      top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%;
+      width: auto; height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;       /* crop without distortion */
+      pointer-events: none;    /* allow scrolling through */
+    }
+
+    /* 2️⃣ Section revealed after scroll */
+    #about {
+      height: 100vh;           /* another full viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+    }
+
+    #about h1 { font-size: 3rem; letter-spacing: 0.03em; }
+    #about h2 { font-size: 1.5rem; font-weight: 400; color: #666; }
+
+    /* 3️⃣ Recent posts list */
+    #posts {
+      padding: 4rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #posts h3 { font-size: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #eee; }
+    #posts ul { list-style: none; }
+    #posts li + li { margin-top: 0.75rem; }
+  </style>
+</head>
 <body>
-  <!-- HERO = full‑screen video -->
+  <!-- HERO with video background -->
   <header id="hero">
-    <video
-      src="assets/video/intro.mp4"   <!-- put your clip here -->
-      autoplay muted loop playsinline></video>
+    <video src="assets/video/intro.mp4" autoplay muted loop playsinline></video>
   </header>
 
-  <!-- MAIN SECTION that appears after scroll -->
-  <main id="about">
-    <h1>Taira Wang</h1>
-    <h2>Front‑End Developer &amp; ML Enthusiast</h2>
+  <main>
+    <section id="about">
+      <h1>Taira Wang</h1>
+      <h2>Front‑End Developer &amp; ML Enthusiast</h2>
+    </section>
+
+    <section id="posts">
+      <h3>Recent Posts</h3>
+      <ul>
+        <li><a href="#">Post title 1</a></li>
+        <li><a href="#">Post title 2</a></li>
+        <li><a href="#">Post title 3</a></li>
+      </ul>
+    </section>
   </main>
 
-  <script src="assets/js/fade-hero.js"></script>
+  <script>
+    // Fade the hero out as the user scrolls
+    const hero = document.getElementById('hero');
+    const heroHeight = hero.offsetHeight;
+
+    window.addEventListener('scroll', () => {
+      const opacity = 1 - (window.scrollY / heroHeight);
+      hero.style.opacity = opacity < 0 ? 0 : opacity;
+    });
+  </script>
 </body>
 </html>
