@@ -1,0 +1,3 @@
+# _config.yml
+remote_theme: "mmistakes/minimal-mistakes"   # or any theme below
+plugins: [jekyll-include-cache]              # speed‑up that Minimal Mistakes expects
