@@ -1,34 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All-in-One View Sections</title>
+  <title>Responsive Video Sections with Projects</title>
   <style>
-    /* Reset and full-viewport */
+    /* Reset and base styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;          /* hide horizontal overflow */
+      overflow-y: auto;            /* allow vertical scroll */
+      font-family: sans-serif;
     }
 
-    /* Container spans full viewport, no scroll */
-    .container {
+    /* Full-screen container for the 4 sections */
+    .intro-container {
       display: flex;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
     }
-
-    /* Four equal columns each fitting in viewport */
     .section {
       flex: 0 0 25vw;
       height: 100vh;
       position: relative;
     }
-
-    /* Intro styling */
     .intro {
       background-color: #fff;
       display: flex;
@@ -36,8 +35,6 @@
       justify-content: center;
       flex-direction: column;
     }
-
-    /* Video covers entire section */
     video {
       position: absolute;
       top: 0;
@@ -46,8 +43,6 @@
       height: 100%;
       object-fit: cover;
     }
-
-    /* Fade-in animations for videos */
     .video-section {
       opacity: 0;
       animation: fadeIn 1s forwards;
@@ -55,45 +50,73 @@
     .video1 { animation-delay: 1s; }
     .video2 { animation-delay: 2s; }
     .video3 { animation-delay: 3s; }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Projects section below */
+    #projects {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #projects h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      border-bottom: 2px solid #333;
+      display: inline-block;
+    }
+    .project-item {
+      margin-bottom: 2rem;
+    }
+    .project-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-item p {
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Section 1: Intro -->
+  <!-- Full-screen intro + videos -->
+  <div class="intro-container">
     <section class="section intro">
-      <div>
-        <h1>Your Name</h1>
-        <h2>Your Title</h2>
-      </div>
+      <h1>Your Name</h1>
+      <h2>Your Title</h2>
     </section>
-
-    <!-- Section 2: Video 1 -->
     <section class="section video-section video1">
       <video autoplay muted loop playsinline>
         <source src="./assets/video/intro.mp4" type="video/mp4" />
         Sorry, your browser doesn’t support embedded videos.
       </video>
     </section>
-
-    <!-- Section 3: Video 2 -->
     <section class="section video-section video2">
       <video autoplay muted loop playsinline>
         <source src="./assets/video/intro.mp4" type="video/mp4" />
-        Sorry, your browser doesn’t support embedded videos.
       </video>
     </section>
-
-    <!-- Section 4: Video 3 -->
     <section class="section video-section video3">
       <video autoplay muted loop playsinline>
         <source src="./assets/video/intro.mp4" type="video/mp4" />
-        Sorry, your browser doesn’t support embedded videos.
       </video>
     </section>
+  </div>
+
+  <!-- Scroll-down projects content -->
+  <div id="projects">
+    <h2>My Projects</h2>
+    <div class="project-item">
+      <h3>Project One</h3>
+      <p>Description of project one with details, links, and technologies used.</p>
+    </div>
+    <div class="project-item">
+      <h3>Project Two</h3>
+      <p>Description of project two with details, links, and technologies used.</p>
+    </div>
+    <div class="project-item">
+      <h3>Project Three</h3>
+      <p>Description of project three with details, links, and technologies used.</p>
+    </div>
+    <!-- Add more projects as needed -->
   </div>
 </body>
 </html>
