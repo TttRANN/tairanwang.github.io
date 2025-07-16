@@ -1,94 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Taira Wang – Front‑End Developer & ML Enthusiast</title>
+  <meta charset="UTF-8" />
+  <title>Video background demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    /* Reset & base typography */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font: 18px/1.5 "Inter", sans-serif; color: #111; }
+    /*  Reset body margins so the video can span edge‑to‑edge  */
+    html,body { height:100%; margin:0; }
 
-    /* 1️⃣ Hero section with full‑screen background video */
-    #hero {
-      position: relative;
-      height: 100vh;           /* one full viewport */
-      overflow: hidden;
-      transition: opacity 0.5s ease-out;
+    /*  The magic: stretch the <video> over the viewport  */
+    .bg-video {
+      position:fixed;           /* stick to viewport, not document flow    */
+      top:0; left:0;
+      width:100%; height:100%;
+      object-fit:cover;         /* crop like background‑size:cover         */
+      z-index:-1;               /* sit behind everything else              */
     }
 
-    #hero video {
-      position: absolute;
-      top: 50%; left: 50%;
-      min-width: 100%; min-height: 100%;
-      width: auto; height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;       /* crop without distortion */
-      pointer-events: none;    /* allow scrolling through */
+    /*  Put your real content above it  */
+    .content {
+      position:relative;
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      font-family:system-ui, sans-serif;
+      color:white;
+      text-shadow:0 1px 4px #000;
     }
-
-    /* 2️⃣ Section revealed after scroll */
-    #about {
-      height: 100vh;           /* another full viewport */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      background: #fff;
-    }
-
-    #about h1 { font-size: 3rem; letter-spacing: 0.03em; }
-    #about h2 { font-size: 1.5rem; font-weight: 400; color: #666; }
-
-    /* 3️⃣ Recent posts list */
-    #posts {
-      padding: 4rem 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    #posts h3 { font-size: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #eee; }
-    #posts ul { list-style: none; }
-    #posts li + li { margin-top: 0.75rem; }
   </style>
 </head>
 <body>
-  <!-- HERO with video background -->
-  <header id="hero">
-    <video autoplay muted loop playsinline poster="/assets/video/intro.jpg" preload="auto">
-      <source src="{{ 'https://tttrann.github.io/tairanwang.github.io/assets/video/0d10d70c-da2b-4ca0-b042-f71bfeb64b47.mp4'}}" type="video/mp4">
-      <source src="/assets/video/intro.webm" type="video/webm">
-      Sorry — your browser can’t play embedded videos.
-    </video>
-  </header>
 
-  <main>
-    <section id="about">
-      <h1>Taira Wang</h1>
-      <h2>Front‑End Developer &amp; ML Enthusiast</h2>
-    </section>
+  <!-- 1️⃣  Autoplay must be muted (iOS/Safari rule) -->
+  <video
+      class="bg-video"
+      src="assets/intro.mp4"
+      autoplay
+      muted
+      loop
+      playsinline   <!-- keeps it from jumping to full‑screen on iOS -->
+  ></video>
 
-    <section id="posts">
-      <h3>Recent Posts</h3>
-      <ul>
-        <li><a href="#">Post title 1</a></li>
-        <li><a href="#">Post title 2</a></li>
-        <li><a href="#">Post title 3</a></li>
-      </ul>
-    </section>
+  <!-- 2️⃣  Your normal markup lives here -->
+  <main class="content">
+    <h1>Hello, GitHub Pages 👋</h1>
+    <p>This is overlay text on a video background.</p>
   </main>
 
-  <script>
-    // Fade the hero out as the user scrolls
-    const hero = document.getElementById('hero');
-    const heroHeight = hero.offsetHeight;
-
-    window.addEventListener('scroll', () => {
-      const opacity = 1 - (window.scrollY / heroHeight);
-      hero.style.opacity = opacity < 0 ? 0 : opacity;
-    });
-  </script>
 </body>
 </html>
-
