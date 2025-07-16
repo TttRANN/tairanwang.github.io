@@ -1,57 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Video background demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <style>
-    /*  Reset body margins so the video can span edge‑to‑edge  */
-    html,body { height:100%; margin:0; }
-
-    /*  The magic: stretch the <video> over the viewport  */
-    .bg-video {
-      position:fixed;           /* stick to viewport, not document flow    */
-      top:0; left:0;
-      width:100%; height:100%;
-      object-fit:cover;         /* crop like background‑size:cover         */
-      z-index:-1;               /* sit behind everything else              */
-    }
-
-    /*  Put your real content above it  */
-    .content {
-      position:relative;
-      min-height:100%;
-      display:grid;
-      place-items:center;
-      font-family:system-ui, sans-serif;
-      color:white;
-      text-shadow:0 1px 4px #000;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 1️⃣  Autoplay must be muted (iOS/Safari rule) -->
-  <video
-    class="bg-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-  >
-    <source src="./assets/video/0d10d70c-da2b-4ca0-b042-f71bfeb64b47.mp4" type="video/mp4">
-    <!-- add more <source> tags here if you have WebM/OGG versions -->
-    Sorry, your browser doesn’t support embedded videos.
-  </video>
-
-
-  <!-- 2️⃣  Your normal markup lives here -->
-  <main class="content">
-    <h1>Hello, GitHub Pages 👋</h1>
-    <p>This is overlay text on a video background.</p>
-  </main>
-
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Video background demo</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <style>
+      body, html { margin:0; height:100%; overflow:hidden; }
+      video { position: fixed; top:50%; left:50%; min-width:100%; min-height:100%; width:auto; height:auto; transform: translate(-50%,-50%); z-index:-1; }
+      #content { position: relative; z‑index: 1; color: white; text-align: center; padding-top: 40vh; }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop playsinline>
+      <source src="./assets/video/0d10d70c-da2b-4ca0-b042-f71bfeb64b47.mp4" type="video/mp4">
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+    <div id="content">
+      <h1>Hello, GitHub Pages</h1>
+      <p>This is overlay text on a video background.</p>
+    </div>
+  </body>
 </html>
+
