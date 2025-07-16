@@ -1,16 +1,26 @@
----
-layout: home          # a layout that ships with “Minimal Mistakes”
-title:  "My Portfolio"
-permalink: /          # makes sure this resolves to example.github.io/
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Taira Wang – Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
 
-<!-- ✅ normal Markdown from here down -->
-<div class="video-wrapper">
-  <iframe
-    src="https://www.youtube.com/embed/u-RLu_8kwA0"
-    title="Demo"
-    loading="lazy"
-    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"></iframe>
-</div>
+<body>
+  <!-- HERO = full‑screen video -->
+  <header id="hero">
+    <video
+      src="assets/video/intro.mp4"   <!-- put your clip here -->
+      autoplay muted loop playsinline></video>
+  </header>
 
-Welcome! This site showcases…
+  <!-- MAIN SECTION that appears after scroll -->
+  <main id="about">
+    <h1>Taira Wang</h1>
+    <h2>Front‑End Developer &amp; ML Enthusiast</h2>
+  </main>
+
+  <script src="assets/js/fade-hero.js"></script>
+</body>
+</html>
